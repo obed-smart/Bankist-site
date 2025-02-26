@@ -1,0 +1,11 @@
+@media screen and (max-width: 768px) {
+  html{
+    font-size: 32%;
+  }
+  .header{
+    flex-direction: column;
+  }
+  .header__title{
+    grid-auto-columns: 1fr;
+  }
+}
