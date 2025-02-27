@@ -110,7 +110,7 @@ img {
 }
 
 .lazy-img {
-  filter: blur(20px);
+  filter: blur(20px); 
 }
 
 /* NAVIGATION */
@@ -192,6 +192,7 @@ img {
   align-items: start;
   justify-items: start;
 }
+
 
 h1 {
   font-size: 5.5rem;
