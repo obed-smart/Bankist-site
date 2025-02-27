@@ -14,6 +14,9 @@ const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 const learnMore = document.querySelector('.btn--scroll-to');
 const featureSec = document.getElementById('section--1');
 const navLinks = document.querySelector('.nav__links');
+const tabsBtnContainer = document.querySelector(".operations__tab-container")
+const contentContainer = document.querySelectorAll(".operations__content")
+const tabs = document.querySelectorAll(".operations__tab")
 
 /* modals window */
 
@@ -74,15 +77,35 @@ const navHeight = navBar.getBoundingClientRect().height; // get the dynamic heig
 // callback for the header observer
 const observeHeader = function (entries) {
   const [entry] = entries;
-
-  if (!entry.isIntersecting) console.log('yes');
-  else console.log('no');
+  if (!entry.isIntersecting) navBar.classList.add("sticky")
+  else navBar.classList.remove("sticky")
 };
 
 const headerObserver = new IntersectionObserver(observeHeader, {
   root: null,
   threshold: 0,
-  rootMargin: `${navHeight}px`
+  rootMargin: `-${navHeight}px`
 });
 
 headerObserver.observe(header);
+
+/* tapped component on operation section*/
+
+tabsBtnContainer.addEventListener("click",function(e){
+  const btn = e.target.closest(".operations__tab")
+  
+  if(!btn) return
+
+// remove animation from the previous tabs
+
+tabs.forEach(tab => tab.classList.remove("operations__tab--active"))
+
+// hide the previous content
+contentContainer.forEach(c => c.classList.remove("operations__content--active"))
+
+// display the coresponding content
+  document.querySelector(`.operations__content--${btn.dataset.tab}`).classList.add("operations__content--active");
+  
+  // animate the clicked tab
+  document.querySelector(`.operations__tab--${btn.dataset.tab}`).classList.add("operations__tab--active");
+})
