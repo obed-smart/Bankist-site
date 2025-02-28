@@ -17,6 +17,10 @@ const navLinks = document.querySelector('.nav__links');
 const tabsBtnContainer = document.querySelector(".operations__tab-container")
 const contentContainer = document.querySelectorAll(".operations__content")
 const tabs = document.querySelectorAll(".operations__tab")
+const slides = document.querySelectorAll(".slide")
+const lazyImage = document.querySelectorAll("img[data-src]")
+const sections = document.querySelectorAll(".section")
+
 
 /* modals window */
 
@@ -109,3 +113,92 @@ contentContainer.forEach(c => c.classList.remove("operations__content--active"))
   // animate the clicked tab
   document.querySelector(`.operations__tab--${btn.dataset.tab}`).classList.add("operations__tab--active");
 })
+
+/*
+ * add slider to the testimonial section
+ *
+ */ 
+const slideBntLeft = document.querySelector(".slider__btn--left")
+const slideBntRight = document.querySelector(".slider__btn--right")
+
+let currentslide = 0 // init default slide state
+let maxSlide = slides.length - 1
+let slideTimer;
+
+const goToSlide = (slide) =>{
+  slides.forEach((s,i) => s.style.transform = `translateX(${100 * (i  - slide)}%)`)
+  
+  console.log(slideTimer);
+  // clearInterval(slideTimer)
+}
+goToSlide(0)
+
+
+
+// next slide Function
+const nextMove = ()=>{
+if (currentslide === maxSlide) {
+  currentslide = 0
+} else{
+  currentslide++
+}
+  goToSlide(currentslide)
+}
+
+const previousMove = ()=>{
+if (currentslide === 0) {
+  currentslide = maxSlide
+} else{
+  currentslide--
+}
+  goToSlide(currentslide)
+}
+
+slideTimer = setInterval(nextMove, 10000);
+
+slideBntRight.addEventListener("click", nextMove)
+slideBntLeft.addEventListener("click", previousMove)
+
+
+
+// add lazyn loading to images
+const observeLazyImage = (entries,observer) =>{
+  const [entry] = entries
+  
+  if(entry.isIntersecting){
+  entry.target.src = entry.target.dataset.src
+  entry.target.addEventListener("load", entry.target.classList.remove("lazy-img"))
+  }
+  // observer.unobserve(entry.target)
+}
+
+const imageObserver = new IntersectionObserver(observeLazyImage,{
+  root:null,
+  threshold:0,
+  rootMargin: '200px'
+})
+lazyImage.forEach((image) => {  
+  imageObserver.observe(image)
+});
+
+
+// add animationb to all section
+
+const observeSections =  (entries,observer) =>{
+  const [entry] = entries
+  
+  if(entry.isIntersecting){
+  entry.target.classList.remove("section--hidden")
+  }
+  // observer.unobserve(entry.target)()
+}
+
+const sectionsObserver = new IntersectionObserver(observeSections,{
+  root:null,
+  threshold:0.15,
+})
+
+sections.forEach((section) => {  
+  sectionsObserver.observe(section)
+  section.classList.add("section--hidden")
+});
