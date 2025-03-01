@@ -114,6 +114,30 @@ contentContainer.forEach(c => c.classList.remove("operations__content--active"))
   document.querySelector(`.operations__tab--${btn.dataset.tab}`).classList.add("operations__tab--active");
 })
 
+
+
+/**
+ *
+ * @param {node} e  the element to be clicked
+ * @param {number} opacity  the opacity to change effect on hover
+ * @returns return the function if no hover matches the links <a>
+ */
+function handleHover(e, opacity) {
+  const link = e.target;
+  if (!link.classList.contains('nav__link')) return;
+  const links = link.closest('.nav').querySelectorAll('.nav__link');
+
+  links.forEach(lin => {
+    if (lin !== link) lin.style.opacity = opacity;
+  });
+}
+
+// add hover effect
+navBar.addEventListener('mouseover', e => handleHover(e, 0.5));
+
+// remove hover effect
+navBar.addEventListener('mouseout', e => handleHover(e, 1));
+
 /*
  * add slider to the testimonial section
  *
@@ -127,9 +151,7 @@ let slideTimer;
 
 const goToSlide = (slide) =>{
   slides.forEach((s,i) => s.style.transform = `translateX(${100 * (i  - slide)}%)`)
-  
-  console.log(slideTimer);
-  // clearInterval(slideTimer)
+
 }
 goToSlide(0)
 
