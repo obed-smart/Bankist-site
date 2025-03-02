@@ -11,19 +11,24 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
-<link rel="stylesheet" href="./query.css" />
+    <link rel="stylesheet" href="./query.css" />
     <title>Bankist | When Banking meets Minimalist</title>
+
+    <script defer src="script.js"></script>
   </head>
-  <body class="">
+  <body class="open">
     <header class="header">
       <nav class="nav">
-        <img
-          src="img/logo.png"
-          alt="Bankist logo"
-          class="nav__logo"
-          id="logo"
-        />
+        <a href="#">
+          <img
+            src="img/logo.png"
+            alt="Bankist logo"
+            class="nav__logo"
+            id="logo"
+          />
+        </a>
         <ul class="nav__links">
+          <ion-icon name="close-outline"></ion-icon>
           <li class="nav__item">
             <a class="nav__link" href="#section--1">Features</a>
           </li>
@@ -39,23 +44,28 @@
             >
           </li>
         </ul>
+        <ion-icon name="menu"></ion-icon>
+
       </nav>
+      <div class="overlaynav"></div>
 
       <div class="header__title">
-        <h1>
-          When
-          <!-- Green highlight effect -->
-          <span class="highlight">banking</span>
-          meets<br />
-          <span class="highlight">minimalist</span>
-        </h1>
-        <h4>A simpler banking experience for a simpler life.</h4>
-        <button class="btn--text btn--scroll-to">Learn more &DownArrow;</button>
-        <img
-          src="img/hero.png"
-          class="header__img"
-          alt="Minimalist bank items"
-        />
+        <div class="header__description">
+          <h1>
+            When
+            <!-- Green highlight effect -->
+            <span class="highlight">banking</span>
+            meets<br />
+            <span class="highlight">minimalist</span>
+          </h1>
+          <h4>A simpler banking experience for a simpler life.</h4>
+          <button class="btn--text btn--scroll-to">
+            Learn more &DownArrow;
+          </button>
+        </div>
+        <div class="header__img">
+          <img src="img/hero.png" alt="Minimalist bank items" />
+        </div>
       </div>
     </header>
 
@@ -105,7 +115,7 @@
           src="img/grow-lazy.jpg"
           data-src="img/grow.jpg"
           alt="Plant"
-          class="features__img lazy-img"
+          class="features__img grow-lazy lazy-img"
         />
 
         <img
@@ -351,6 +361,14 @@
     </div>
     <div class="overlay hidden"></div>
 
-    <script src="script.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <!-- <script src="script.js"></script> -->
   </body>
 </html>

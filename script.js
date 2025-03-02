@@ -190,7 +190,7 @@ function activeSlide(slide) {
 }
 
 createDots();
-updateSlide(currentslide);
+// updateSlide(currentslide);
 
 // next slide Function
 const nextMove = () => {
@@ -211,7 +211,7 @@ const previousMove = () => {
   updateSlide(currentslide);
 };
 
-slideTimer = setInterval(nextMove, 10000);
+// slideTimer = setInterval(nextMove, 10000);
 
 slideBntRight.addEventListener('click', nextMove);
 slideBntLeft.addEventListener('click', previousMove);
