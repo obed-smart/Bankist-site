@@ -128,7 +128,7 @@ let slideTimer;
 const goToSlide = (slide) =>{
   slides.forEach((s,i) => s.style.transform = `translateX(${100 * (i  - slide)}%)`)
   
-  console.log(slideTimer);
+  
   // clearInterval(slideTimer)
 }
 goToSlide(0)
