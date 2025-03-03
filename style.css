@@ -224,9 +224,13 @@ img {
   }
 }
 
-body.open .overlaynav {
+body.open .overlaynav{
   visibility: visible;
   opacity: 1;
+}
+
+body:has(.sticky) .overlaynav{
+  inset: 0 0 0 74%;
 }
 
 [name='close-outline'] {
