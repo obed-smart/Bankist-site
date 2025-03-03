@@ -159,12 +159,6 @@ let currentslide = 0; // init default slide state
 let maxSlide = slides.length - 1;
 let slideTimer;
 
-<<<<<<< HEAD
-const goToSlide = (slide) =>{
-  slides.forEach((s,i) => s.style.transform = `translateX(${100 * (i  - slide)}%)`)
-  
-  
-  // clearInterval(slideTimer)
   
 const goToSlide = slide => {
   slides.forEach(
@@ -229,11 +223,14 @@ if (!isMobile) slideTimer = setInterval(nextMove, 10000);
 slideBntRight.addEventListener('click', nextMove);
 slideBntLeft.addEventListener('click', previousMove);
 
+
 document.addEventListener('keydown', e => {
-  clearInterval(slideTimer);
+  if (slideTimer) clearInterval(slideTimer);
   e.key === 'ArrowLeft' && previousMove();
   e.key === 'ArrowRight' && nextMove();
 });
+
+
 
 // add lazyn loading to images
 const observeLazyImage = (entries, observer) => {
