@@ -22,6 +22,8 @@ const dotContainer = document.querySelector('.dots');
 const lazyImage = document.querySelectorAll('img[data-src]');
 const sections = document.querySelectorAll('.section');
 
+const isMobile = window.matchMedia('(max-width: 767px)').matches;
+
 /* modals window */
 
 // open modal
@@ -65,6 +67,8 @@ navLinks.addEventListener('click', e => {
   if (!e.target.classList.contains('nav__link')) return;
 
   if (e.target.classList.contains('nav__link')) {
+    if (document.body.classList.contains('open'))
+      document.body.classList.remove('open');
     section.scrollIntoView({ behavior: 'smooth' });
   }
 });
@@ -136,11 +140,13 @@ function handleHover(e, opacity) {
   });
 }
 
-// add hover effect
-navBar.addEventListener('mouseover', e => handleHover(e, 0.5));
+if (!isMobile) {
+  // add hover effect
+  navBar.addEventListener('mouseover', e => handleHover(e, 0.5));
 
-// remove hover effect
-navBar.addEventListener('mouseout', e => handleHover(e, 1));
+  // remove hover effect
+  navBar.addEventListener('mouseout', e => handleHover(e, 1));
+}
 
 /*
  * add slider to the testimonial section
@@ -197,7 +203,7 @@ function activeSlide(slide) {
 }
 
 createDots();
-updateSlide(currentslide);
+if (!isMobile) updateSlide(currentslide);
 
 // next slide Function
 const nextMove = () => {
@@ -218,7 +224,7 @@ const previousMove = () => {
   updateSlide(currentslide);
 };
 
-slideTimer = setInterval(nextMove, 10000);
+if (!isMobile) slideTimer = setInterval(nextMove, 10000);
 
 slideBntRight.addEventListener('click', nextMove);
 slideBntLeft.addEventListener('click', previousMove);
@@ -259,20 +265,59 @@ lazyImage.forEach(image => {
 
 // add animationb to all section
 
-sections.forEach(section => section.classList.add('section--hidden'));
+if (!isMobile) {
+  sections.forEach(section => section.classList.add('section--hidden'));
 
-const observeSections = (entries, observer) => {
-  const [entry] = entries;
+  const observeSections = (entries, observer) => {
+    const [entry] = entries;
 
-  if (entry.isIntersecting) {
-    entry.target.classList.remove('section--hidden');
-    observer.unobserve(entry.target); // Stop observing once visible
-  }
-};
+    if (entry.isIntersecting) {
+      entry.target.classList.remove('section--hidden');
+      observer.unobserve(entry.target); // Stop observing once visible
+    }
+  };
 
-const sectionsObserver = new IntersectionObserver(observeSections, {
-  root: null,
-  threshold: 0.15,
+  const sectionsObserver = new IntersectionObserver(observeSections, {
+    root: null,
+    threshold: 0.15,
+  });
+
+  sections.forEach(section => sectionsObserver.observe(section));
+}
+
+// mobile device and function
+const icons = document.querySelectorAll('ion-icon');
+const cards = document.querySelectorAll('.card');
+
+icons.forEach(icon => {
+  icon.addEventListener('click', e => {
+    if (!e.target) return;
+    if (e.target.name === 'menu') document.body.classList.add('open');
+    if (e.target.name === 'close-outline')
+      document.body.classList.remove('open');
+  });
 });
 
-sections.forEach(section => sectionsObserver.observe(section));
+document
+  .querySelector('.overlaynav')
+  .addEventListener('click', () => document.body.classList.remove('open'));
+
+if (isMobile) {
+  cards.forEach(card => card.classList.add('card--hidden'));
+
+  const observeCard = (entries, observer) => {
+    const [entry] = entries;
+
+    if (entry.isIntersecting) {
+      entry.target.classList.remove('card--hidden');
+      observer.unobserve(entry.target); // Stop observing once visible
+    }
+  };
+
+  const cardsObserver = new IntersectionObserver(observeCard, {
+    root: null,
+    threshold: 0.15,
+  });
+
+  cards.forEach(card => cardsObserver.observe(card));
+}
