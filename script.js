@@ -39,9 +39,13 @@ const closeModal = function () {
   overlay.classList.add('hidden');
 };
 
-// implement modals
-for (let i = 0; i < btnsOpenModal.length; i++)
-  btnsOpenModal[i].addEventListener('click', openModal);
+if (!isMobile) {
+  // implement modals
+  for (let i = 0; i < btnsOpenModal.length; i++) {
+    btnsOpenModal[i].addEventListener('click', openModal);
+  }
+}
+console.log(isMobile)
 
 // remove modal
 btnCloseModal.addEventListener('click', closeModal);
@@ -159,7 +163,6 @@ let currentslide = 0; // init default slide state
 let maxSlide = slides.length - 1;
 let slideTimer;
 
-  
 const goToSlide = slide => {
   slides.forEach(
     (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
@@ -223,14 +226,11 @@ if (!isMobile) slideTimer = setInterval(nextMove, 10000);
 slideBntRight.addEventListener('click', nextMove);
 slideBntLeft.addEventListener('click', previousMove);
 
-
 document.addEventListener('keydown', e => {
   if (slideTimer) clearInterval(slideTimer);
   e.key === 'ArrowLeft' && previousMove();
   e.key === 'ArrowRight' && nextMove();
 });
-
-
 
 // add lazyn loading to images
 const observeLazyImage = (entries, observer) => {
