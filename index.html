@@ -16,7 +16,7 @@
 
     <script defer src="script.js"></script>
   </head>
-  <body class="open">
+  <body class="">
     <header class="header">
       <nav class="nav">
         <a href="#">
@@ -45,7 +45,6 @@
           </li>
         </ul>
         <ion-icon name="menu"></ion-icon>
-
       </nav>
       <div class="overlaynav"></div>
 
@@ -70,7 +69,7 @@
     </header>
 
     <section class="section" id="section--1">
-      <div class="section__title">
+      <div class="section__title card">
         <h2 class="section__description">Features</h2>
         <h3 class="section__header">
           Everything you need in a modern bank and more.
@@ -82,9 +81,9 @@
           src="img/digital-lazy.jpg"
           data-src="img/digital.jpg"
           alt="Computer"
-          class="features__img lazy-img"
+          class="features__img lazy-img card"
         />
-        <div class="features__feature">
+        <div class="features__feature card">
           <div class="features__icon">
             <svg>
               <use xlink:href="img/icons.svg#icon-monitor"></use>
@@ -98,7 +97,7 @@
           </p>
         </div>
 
-        <div class="features__feature">
+        <div class="features__feature card">
           <div class="features__icon">
             <svg>
               <use xlink:href="img/icons.svg#icon-trending-up"></use>
@@ -115,16 +114,16 @@
           src="img/grow-lazy.jpg"
           data-src="img/grow.jpg"
           alt="Plant"
-          class="features__img grow-lazy lazy-img"
+          class="features__img grow-lazy lazy-img card"
         />
 
         <img
           src="img/card-lazy.jpg"
           data-src="img/card.jpg"
           alt="Credit card"
-          class="features__img lazy-img"
+          class="features__img lazy-img card"
         />
-        <div class="features__feature">
+        <div class="features__feature card">
           <div class="features__icon">
             <svg>
               <use xlink:href="img/icons.svg#icon-credit-card"></use>
@@ -141,7 +140,7 @@
     </section>
 
     <section class="section" id="section--2">
-      <div class="section__title">
+      <div class="section__title card">
         <h2 class="section__description">Operations</h2>
         <h3 class="section__header">
           Everything as simple as possible, but no simpler.
@@ -164,7 +163,7 @@
           </button>
         </div>
         <div
-          class="operations__content operations__content--1 operations__content--active"
+          class="operations__content card operations__content--1 operations__content--active"
         >
           <div class="operations__icon operations__icon--1">
             <svg>
@@ -182,7 +181,7 @@
           </p>
         </div>
 
-        <div class="operations__content operations__content--2">
+        <div class="operations__content card operations__content--2">
           <div class="operations__icon operations__icon--2">
             <svg>
               <use xlink:href="img/icons.svg#icon-home"></use>
@@ -198,7 +197,7 @@
             anim id est laborum.
           </p>
         </div>
-        <div class="operations__content operations__content--3">
+        <div class="operations__content card operations__content--3">
           <div class="operations__icon operations__icon--3">
             <svg>
               <use xlink:href="img/icons.svg#icon-user-x"></use>
@@ -218,7 +217,7 @@
     </section>
 
     <section class="section" id="section--3">
-      <div class="section__title section__title--testimonials">
+      <div class="section__title card section__title--testimonials">
         <h2 class="section__description">Not sure yet?</h2>
         <h3 class="section__header">
           Millions of Bankists are already making their lifes simpler.
@@ -226,7 +225,7 @@
       </div>
 
       <div class="slider">
-        <div class="slide slide--1">
+        <div class="slide card slide--1">
           <div class="testimonial">
             <h5 class="testimonial__header">Best financial decision ever!</h5>
             <blockquote class="testimonial__text">
@@ -245,7 +244,7 @@
           </div>
         </div>
 
-        <div class="slide slide--2">
+        <div class="slide card slide--2">
           <div class="testimonial">
             <h5 class="testimonial__header">
               The last step to becoming a complete minimalist
@@ -265,7 +264,7 @@
           </div>
         </div>
 
-        <div class="slide slide--3">
+        <div class="slide card slide--3">
           <div class="testimonial">
             <h5 class="testimonial__header">
               Finally free from old-school banks
@@ -297,17 +296,19 @@
     </section>
 
     <section class="section section--sign-up">
-      <div class="section__title">
+      <div class="section__title card">
         <h3 class="section__header">
           The best day to join Bankist was one year ago. The second best is
           today!
         </h3>
       </div>
-      <button class="btn btn--show-modal">Open your free account today!</button>
+      <button class="btn btn--show-modal card">
+        Open your free account today!
+      </button>
     </section>
 
     <footer class="footer">
-      <ul class="footer__nav">
+      <ul class="footer__nav card">
         <li class="footer__item">
           <a class="footer__link" href="#">About</a>
         </li>
@@ -331,7 +332,7 @@
         </li>
       </ul>
       <img src="img/icon.png" alt="Logo" class="footer__logo" />
-      <p class="footer__copyright">
+      <p class="footer__copyright card">
         &copy; Copyright by
         <a
           class="footer__link twitter-link"
